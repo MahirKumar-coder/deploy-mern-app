@@ -14,7 +14,11 @@ app.get('/ping', (req, res) => {
 });
 
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors({
+  origin: 'https://your-vercel-app.vercel.app', // Replace this with your actual deployed frontend URL
+  credentials: true,  // Optional, if you use cookies or authorization headers
+}));
+
 app.use('/auth', AuthRouter)
 app.use('/products', ProductRouter)
 
